@@ -1,0 +1,76 @@
+{
+  "0": {
+    "Description": "Torque/Speed Control 1 - TSC1",
+    "Transmission Repetition Rate": "when active; 10 ms to engine - 50 ms to retarder",
+    "Data Length": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "0",
+    "PDU Specific": "DA",
+    "Default Priority": "3",
+    "Parameter Group Number": "0",
+    "SPN": {
+      "695": {
+        "SPN Description": "Override Control Mode",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.1"
+      },
+      "696": {
+        "SPN Description": "Requested Speed Control Conditions",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.3"
+      },
+      "897": {
+        "SPN Description": "Override Control Mode Priority",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.5"
+      },
+      "898": {
+        "SPN Description": "Requested Speed/Speed Limit",
+        "Length": "2 bytes",
+        "Bit Start Position /Bytes": "2.3"
+      },
+      "518": {
+        "SPN Description": "Requested Torque/Torque Limit",
+        "Length": "1 byte",
+        "Bit Start Position /Bytes": "4"
+      }
+    }
+  },
+  "265": {
+    "Description": "Torque/Speed Control 1 - TSC1",
+    "Transmission Repetition Rate": "when active; 10 ms to engine - 50 ms to retarder",
+    "Data Length": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "0",
+    "PDU Specific": "DA",
+    "Default Priority": "3",
+    "Parameter Group Number": "0",
+    "SPN": {
+      "695": {
+        "SPN Description": "Override Control Mode",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.1"
+      },
+      "696": {
+        "SPN Description": "Requested Speed Control Conditions",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.3"
+      },
+      "897": {
+        "SPN Description": "Override Control Mode Priority",
+        "Length": "2 bits",
+        "Bit Start Position /Bytes": "1.5"
+      },
+      "898": {
+        "SPN Description": "Requested Speed/Speed Limit",
+        "Length": "2 bytes",
+        "Bit Start Position /Bytes": "2.3"
+      },
+      "518": {
+        "SPN Description": "Requested Torque/Torque Limit",
+        "Length": "1 byte",
+        "Bit Start Position /Bytes": "4"
+      }
+    }
+  }
+}

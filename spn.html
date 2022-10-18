@@ -64,6 +64,23 @@
         </div>
       </div>
     </header>
-    <h1>spn</h1>
+    <div class="p-5 mb-4 rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">SPN : Parameter Definitions</h1>
+        <p class="col-md fs-4">
+          Cette section fournit une description de chaque paramètre utilisé dans
+          le réseau SAE J1939. Le site description comprend la longueur des
+          données, le type de données, la résolution, la plage et une étiquette
+          (label) de référence. Après la mise sous tension, un nœud doit régler
+          en interne les "bits de disponibilité" des paramètres reçus comme non
+          disponibles et fonctionner avec les valeurs par défaut jusqu'à ce que
+          des données valides soient reçues. Lorsque Couche d'application
+          véhicule - J1939-71 (jusqu'en décembre 2001) - p. 29 Lors de la
+          transmission, les octets non définis doivent être envoyés sous la
+          forme 255 (FF 16) et les bits non définis doivent être envoyés sous la
+          forme 1.
+        </p>
+      </div>
+    </div>
   </body>
 </html>
