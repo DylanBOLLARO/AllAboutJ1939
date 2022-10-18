@@ -57,6 +57,9 @@ input.addEventListener("change", () => {
           if (!arrayPGN.includes(c.substr(22, 4))) {
             arrayPGN.push(c.substr(22, 4));
             arrayPGNDEC.push(parseInt(c.substr(22, 4), 16));
+            if (c.substr(22, 4) == "0000") {
+              tsc1 = true;
+            }
           }
         }
       });
