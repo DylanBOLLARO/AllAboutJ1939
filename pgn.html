@@ -68,33 +68,11 @@
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">PGN : Parameter Group Definitions</h1>
         <p class="col-md fs-4">
-          Cette section définit les groupes de paramètres à utiliser sur le
-          réseau SAE J1939. Tous les bits non définis de bits non définis
-          doivent être transmis avec une valeur de "1". Tous les bits non
-          définis doivent être reçus avec la valeur "don't care" (soit masqués,
-          soit ignorés). ignorés). Cela permet de les définir et de les utiliser
-          à l'avenir sans provoquer d'incompatibilités. Les messages qui
-          demandent de contrôle sur le dispositif récepteur (TSC1, TC1) sont
-          transmis à haut débit uniquement pendant le temps où le contrôle est
-          actif, mais ils peuvent être envoyés à faible débit de manière
-          facultative lorsque le contrôle est actif. mais peuvent éventuellement
-          être envoyés à un débit lent en tant que "battement de cœur". Dans le
-          cas de TSC1, il est prévu que le dispositif émetteur indique au
-          dispositif récepteur qu'il ne demande plus de commande en envoyant un
-          signal à vitesse lente. qu'il ne demande plus de contrôle en envoyant
-          au moins une diffusion avec les modes de contrôle prioritaire réglés
-          sur 00. En l'absence de diffusions continues diffusions continues de
-          la part d'un module demandeur, le dispositif récepteur doit revenir à
-          son mode normal après deux périodes de mise à jour. La taille du champ
-          de données champ de données CAN est de 8 octets. Les groupes de
-          paramètres d'une longueur de 0 à 8 octets de données utilisent les
-          services de la couche liaison de données (voir SAE J1939-21). Les
-          groupes de paramètres dont la longueur dépasse 8 octets de données ou
-          les définitions de groupes de paramètres dont la longueur est variable
-          et peut dépasser 8 octets de données doivent utiliser les services de
-          la couche liaison de données (voir SAE J1939-21). octets doivent
-          utiliser les services du protocole de transport. (Voir le point 5.10
-          de la norme SAE J1939-21).
+          Le format de message de la norme SAE J1939 utilise le numéro du groupe
+          de paramètres (PGN) comme étiquette pour un groupe de paramètres.
+          Chacun des paramètres du groupe peut être exprimé sous forme de
+          données mises à l'échelle définies ou sous forme d'états de fonction
+          constitués de deux bits ou plus.
         </p>
       </div>
     </div>
