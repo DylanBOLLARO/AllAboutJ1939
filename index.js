@@ -9,19 +9,11 @@ let arrayID = [],
 
 let knowF004, know0;
 let indexID;
-function getEmpId(element, index) {
+function getEmpId(element) {
   let empId = element.getAttribute("id");
   let emppgn = element.getAttribute("data-pgn");
-  let pos = element.getAttribute("nb");
-  console.log(element);
-
-  console.log(empId);
-  console.log(index);
-  // console.log(index);
-  console.log(`#${empId}`);
   let trtr = document.getElementById(`${empId}`);
 
-  // console.log(trtr.parentElement.parentElement);
   trtr.parentElement.parentElement.querySelector("#usuedme").innerHTML = `
     <table class="table table-striped m-0">
       <thead>
@@ -119,15 +111,11 @@ input.addEventListener("change", () => {
         .map((h, azgeuaz) => {
           function toto(id) {
             Object.keys(dataJSON[h].SPN).map((l) => {
-              console.log(l);
               if (l == 190) {
                 knowF004 = true;
               }
-              console.log(indexID);
               id.innerHTML += `              
-                          <button id="${l}" onclick="getEmpId(this,indexID)" data-pgn="${h}" nb="${
-                index + azgeuaz
-              }" type="button" class="btn  btn-outline-primary">SPN : ${l}</button>
+                          <button id="${l}" onclick="getEmpId(this,indexID)" data-pgn="${h}" type="button" class="btn  btn-outline-primary">SPN : ${l}</button>
                           `;
             });
           }
@@ -158,15 +146,7 @@ input.addEventListener("change", () => {
                 )
               );
             }
-
-            console.log(
-              document.querySelector(
-                `#id-global-${index} #pgn-${azgeuaz} #testy${index + azgeuaz}`
-              )
-            );
           } else {
-            console.log(index);
-            console.log(azgeuaz);
             cellules.item(index).innerHTML += `
             <div id="pgn-${
               index + azgeuaz

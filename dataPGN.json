@@ -263,39 +263,79 @@
     "Parameter Group Number": "61443",
     "SPN": {
       "558": {
-        "Description SPN": "Accelerator Pedal 1 Low Idle Switch",
+        "Description SPN": "Signal de commutation qui indique l'état du commutateur de ralenti de la pédale d'accélérateur 1.  Le commutateur de ralenti est défini dans la pratique recommandée SAE J1843.",
         "Longueur": "2 bit",
         "Position de début bit/octet": "1.1"
       },
       "559": {
-        "Description SPN": "Accelerator Pedal Kickdown Switch",
+        "Description SPN": "Signal de commutation qui indique si le commutateur de kickdown de la pédale d'accélérateur est ouvert ou fermé.  Le commutateur de kickdown est défini dans la norme SAE J1843.",
         "Longueur": "2 bits",
         "Position de début bit/octet": "1.3"
       },
       "1437": {
-        "Description SPN": "Road Speed Limit Status",
+        "Description SPN": "État (actif ou non actif) du système utilisé pour limiter la vitesse maximale du véhicule. REMARQUE - Bien qu'ils soient quelque peu incohérents avec d'autres paramètres d'état J1939, les états définissant 00b = actif et 01b = inactif pour l'état de la limite de vitesse des routes ne sont PAS des erreurs typographiques et doivent être mis en œuvre comme indiqué.",
         "Longueur": "2 bits",
         "Position de début bit/octet": "1.5"
       },
       "91": {
-        "Description SPN": "Accelerator Pedal Position 1",
+        "Description SPN": "Ce paramètre est destiné à la commande principale de l'accélérateur dans une application. SPN 91 est le rapport calculé entre la position réelle du dispositif d'entrée de la demande de vitesse [moteur] ou de la demande de couple [moteur] de l'opérateur (le plus souvent une pédale d'accélérateur ou un levier d'accélérateur) et la position maximale du dispositif d'entrée. Lorsque des moyens redondants sont utilisés pour détecter la position de la commande, le SPN 91 doit afficher le résultat de la méthode définie par le constructeur (c'est-à-dire calculée) pour déterminer le rapport à partir des entrées redondantes. Pour les véhicules routiers, le SPN 91 est la pédale d'accélérateur du conducteur, en position normale de conduite. En plus de signaler la demande du conducteur en matière de groupe motopropulseur, le SPN 91 fournit également des informations anticipées aux algorithmes de transmission et d'ASR sur les intentions du conducteur. Dans les applications maritimes, il s'agit généralement de la manette des gaz du conducteur. NOTE- Si une application n'a qu'une seule commande d'accélérateur, utilisez le SPN 91. Voir les SPNs 28, 29 et 974 pour des paramètres supplémentaires de position de la pédale d'accélérateur. Le SPN 9510 est un SP de diagnostic supplémentaire pour la position de la pédale d'accélérateur. Le SPN 91 représente la position combinée, réelle, de la première pédale d'accélérateur, sur la base des informations provenant de tous les capteurs de position redondants disponibles pour cette pédale. Si un interrupteur de validation de ralenti est utilisé en conjonction avec la position 1 de la pédale d'accélérateur, utilisez l'interrupteur de ralenti 1 de la pédale d'accélérateur, SPN 558. Voir SAE J1843 pour les descriptions normalisées de l'interface de position de la pédale d'accélérateur. Les SPN 9763, 2972 et 2973 peuvent être utilisés comme SP de diagnostic pour les capteurs de pédale qui prennent en charge plusieurs sorties.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "2"
       },
       "92": {
-        "Description SPN": "Percent Load At Current Speed",
+        "Description SPN": "Le rapport entre le pourcentage de couple réel du moteur (indiqué) et le couple maximal indiqué disponible au régime actuel du moteur, ramené à un couple nul pendant le freinage du moteur.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "3"
       },
+      "29": {
+        "Description SPN": "Rapport entre la position réelle du second dispositif d'entrée analogique de demande de régime/couple moteur (tel qu'une pédale d'accélérateur ou un levier d'accélérateur) et la position maximale du dispositif d'entrée.  Ce paramètre est destiné à la commande d'accélérateur secondaire dans une application.  Si une application n'a qu'une seule commande d'accélérateur, utilisez le paramètre SPN 91.  Dans les applications marines, il s'agit généralement de la deuxième manette d'accélérateur de l'opérateur. Si un interrupteur de validation de ralenti est utilisé en conjonction avec la position 2 de la pédale d'accélérateur, utilisez l'interrupteur de ralenti de la pédale d'accélérateur 2, SPN 2970. REMARQUE - Voir SPN 91 et 974 pour les paramètres supplémentaires de la position de l'accélérateur.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "5"
+      },
       "974": {
-        "Description SPN": "Remote Accelerator Pedal Position",
+        "Description SPN": "Le rapport entre la position réelle du dispositif d'entrée analogique de demande de vitesse/couple du moteur à distance (tel qu'une pédale d'accélérateur ou un levier d'accélérateur) et la position maximale du dispositif d'entrée.  Par exemple, dans les véhicules routiers, il peut s'agir d'un dispositif de commande d'accélérateur extérieur à la cabine du conducteur ou d'un accélérateur commandé par un levier manuel depuis le siège du conducteur. Le commutateur d'activation de l'accélérateur à distance est le SPN 969. Ce paramètre active le fonctionnement de l'accélérateur à distance. NOTE - Voir les numéros SPN 29 et 91 pour les paramètres supplémentaires de position de l'accélérateur. Si une seule position d'accélérateur d'accélérateur sur un véhicule, le SPN 91 doit être utilisé.  Le SPN 28 est un SP de diagnostic supplémentaire pour la position de l'accélérateur.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "4"
+      },
+      "2970": {
+        "Description SPN": "Signal de commutation qui indique l'état du commutateur de ralenti de la pédale d'accélérateur 2.  Le commutateur de ralenti est défini dans la norme SAE J1843. Remarque : consultez également le document SPN 558 Accelerator Pedal 1 Low Idle Switch et le document SPN 2971 Accelerator Pedal 3 Low Idle Switch.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.7"
+      },
+      "2979": {
+        "Description SPN": "État (actif ou non actif) du système utilisé pour limiter l'accélération maximale du véhicule vers l'avant. NOTE : Les effets des limites de contrôle des émissions, telles que le contrôle de la fumée d'échappement du moteur, sont spécifiquement exclus ; ils ne sont pas considérés comme faisant partie d'une fonction de limitation de l'accélération du véhicule.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "6.1"
+      },
+      "3357": {
+        "Description SPN": "Il s'agit de la quantité maximale de couple que le moteur peut immédiatement fournir, en pourcentage du couple moteur de référence (SPN 544).  Le pourcentage de couple moteur disponible maximal réel doit tenir compte de tous les déclassements du couple moteur (par exemple, le contrôle du rapport air/carburant (AFC), le contrôle du bruit, etc.  Ce paramètre se différencie des points 1 à 5 de la carte de configuration du moteur, car il tient compte de toutes les entrées internes dynamiques, telles que l'AFC, et il est actualisé toutes les 50 ms.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
+      },
+      "5021": {
+        "Description SPN": "Demande momentanée d'activation de la puissance maximale du moteur - retour d'information sur le support de la fonction",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "6.3"
+      },
+      "5398": {
+        "Description SPN": "Le couple calculé qui indique la quantité estimée de perte de couple due au système de traitement de l'air du moteur. La valeur transmise dans ce paramètre est incluse dans le message SPN 514 (Frottement nominal - Pourcentage de couple).  Les données sont transmises en pourcentage du couple moteur de référence (voir le message de configuration du moteur, PGN 65251).",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
+      },
+      "5399": {
+        "Description SPN": "Indique que les températures d'échappement ont été élevées pour la régénération du système de post-traitement du filtre à particules diesel ou en préparation de la régénération du système de post-traitement des particules diesel.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "6.5"
+      },
+      "5400": {
+        "Description SPN": "Indique que les températures d'échappement ont été élevées pour la régénération du système de post-traitement SCR ou en préparation de la régénération du système de post-traitement SCR.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "6.7"
       }
     }
   },
   "61444": {
-    "Description": "Electronic Engine Controller 1 - EEC1",
+    "Description": "Electronic Engine Controller 1 - EEC1 - Engine related parameters",
     "Transmission Repetition Rate": "Engine speed dependent",
     "Data Longueur": "8 bytes",
     "Data Page": "0",
@@ -305,39 +345,44 @@
     "Parameter Group Number": "61444",
     "SPN": {
       "899": {
-        "Description SPN": "Engine Torque Mode",
+        "Description SPN": "Signal d'état qui indique quel mode de couple moteur est actuellement en train de générer, limiter ou contrôler le couple.  Notez que les modes ne sont pas classés par ordre de priorité. Tous les modes ne sont pas forcément pertinents pour un dispositif donné.  Certains dispositifs peuvent ne pas mettre en œuvre toutes les fonctions.  Pour des priorités typiques, voir les figures SPN512_A et SPN512_B pour le contrôle du moteur.  Le type de données de ce paramètre est mesuré.  Le mode 0000b signifie \"Pas de demande\" : le couple moteur peut aller de 0 à la pleine charge uniquement en raison de la faible sortie du régulateur de ralenti. Les modes 0001b à 1110b indiquent qu'il y a une demande de couple ou que la fonction identifiée contrôle actuellement le moteur : le couple moteur peut aller de 0 (pas d'alimentation) à la limite supérieure.",
         "Longueur": "4 bits",
         "Position de début bit/octet": "1.1"
       },
       "512": {
-        "Description SPN": "Driver's Demand Engine - Percent Torque",
+        "Description SPN": "Le couple de sortie du moteur demandé par le conducteur. Elle est basée sur les entrées provenant des demandeurs suivants, externes au groupe motopropulseur : conducteur (via la pédale d'accélérateur), régulateur de vitesse et/ou régulateur de la vitesse limite sur route. Les commandes dynamiques des fonctions internes du groupe motopropulseur, telles que le contrôle des fumées, la régulation du moteur à basse et à haute vitesse, l'ASR et la commande de changement de vitesse, sont exclues de ce calcul. Les données sont transmises en couple indiqué en pourcentage du couple moteur de référence. Voir le PGN 65251 pour le message de configuration du moteur. Plusieurs bits d'état sont définis séparément pour indiquer la demande qui est actuellement honorée. Ce paramètre peut être utilisé pour la programmation des équipes.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "2"
       },
       "513": {
-        "Description SPN": "Actual Engine - Percent Torque",
+        "Description SPN": "Le couple de sortie calculé du moteur.  Les données sont transmises en couple indiqué en pourcentage du couple moteur de référence (voir le message de configuration du moteur, PGN 65251).  La valeur du couple en pourcentage du moteur ne sera pas inférieure à zéro et elle inclut le couple développé dans les cylindres pour surmonter les frottements.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "3"
       },
       "190": {
-        "Description SPN": "Engine Speed",
+        "Description SPN": "Régime réel du moteur qui est calculé sur un angle minimal de 720 degrés du vilebrequin, divisé par le nombre de cylindres.",
         "Longueur": "2 bytes",
         "Position de début bit/octet": "4-5"
       },
       "1483": {
-        "Description SPN": "Source Address of Controlling Device for Engine Control",
+        "Description SPN": "L'adresse source du dispositif SAE J1939 qui commande actuellement le moteur.  Elle est utilisée pour étendre le paramètre de mode de couple (voir SPN 899) dans les cas où la commande est en réponse à un calculateur qui ne figure pas dans le tableau SPN899_A.  Sa valeur peut être l'adresse source de l'ECU qui transmet le message (ce qui signifie qu'aucun message SAE J1939 externe ne fournit la commande active) ou l'adresse source de l'ECU SAE J1939 qui fournit actuellement la commande active dans un message TSC1 (voir PGN 0) ou un message similaire.  Notez que si la valeur de ce paramètre est identique à l'adresse source du dispositif qui le transmet, la commande peut être due à un message sur une liaison de données non J1939 telle que SAE J1922 ou une liaison propriétaire.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "6"
       },
       "1675": {
-        "Description SPN": "Engine Starter Mode",
+        "Description SPN": "Il existe plusieurs phases dans une action de démarrage et différentes raisons pour lesquelles un démarrage ne peut avoir lieu.",
         "Longueur": "4 bits",
         "Position de début bit/octet": "7.1"
       },
       "2432": {
-        "Description SPN": "Engine Demand - Percent Torque",
+        "Description SPN": "Le couple de sortie demandé au moteur par toutes les entrées internes dynamiques, y compris le contrôle des fumées, le contrôle du bruit et la régulation à basse et haute vitesse.",
         "Longueur": "1 byte",
         "Position de début bit/octet": "8"
+      },
+      "4154": {
+        "Description SPN": "Ce paramètre affiche un couple supplémentaire en pourcentage du couple moteur de référence.",
+        "Longueur": "4 bits",
+        "Position de début bit/octet": "1.5"
       }
     }
   },
@@ -861,6 +906,202 @@
         "Description SPN": "Coolant Filter Differential Pressure",
         "Longueur": "1 byte",
         "Position de début bit/octet": "8"
+      }
+    }
+  },
+  "65213": {
+    "Description": "Ce PGN transfère des informations d'état et de mesure pour un ventilateur de refroidissement moteur. Il est utilisé pour le ventilateur principal s'il y a plus d'un ventilateur dans le système le PGN \"FD31\" peut être utilisé pour un deuxième ventilateur.",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "",
+    "Parameter Group Number": "65213",
+    "SPN": {
+      "975": {
+        "Description SPN": "Vitesse estimée du ventilateur en tant que rapport entre l'entraînement du ventilateur (vitesse actuelle) et l'entraînement du ventilateur complètement engagé (vitesse maximale du ventilateur).  Un ventilateur à deux états (arrêt/marche) utilisera respectivement 0 % et 100 %.  Un ventilateur à trois états (arrêt/intermédiaire/marche) utilisera respectivement 0 %, 50 % et 100 %.  Un ventilateur à vitesse variable utilisera 0 % à 100 %. Les systèmes à ventilateurs multiples utiliseront 0 à 100 % pour indiquer le pourcentage de la capacité de refroidissement fournie.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
+      },
+      "977": {
+        "Description SPN": "Ce paramètre est utilisé pour indiquer l'état ou le mode de fonctionnement actuel de l'entraînement du ventilateur.",
+        "Longueur": "4 bits",
+        "Position de début bit/octet": "2.1"
+      },
+      "1639": {
+        "Description SPN": "The speed of the fan associated with engine coolant system.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
+      },
+      "4211": {
+        "Description SPN": "La pression hydraulique utilisée pour entraîner le système de ventilation, détectée avant le moteur hydraulique du ventilateur.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
+      },
+      "4212": {
+        "Description SPN": "État de la commande de dérivation de l'entraînement du ventilateur telle qu'elle est commandée par le calculateur.  La dérivation de l'entraînement du ventilateur détourne la pression de la pompe du moteur hydraulique pour maintenir la pression d'entraînement du ventilateur.  0% est défini comme absence de dérivation (c'est-à-dire qu'il n'y a pas de dérivation de la pression d'entraînement du ventilateur) et 100% est défini comme dérivation totale (c'est-à-dire qu'il y a dérivation de la pression d'entraînement maximale du ventilateur) du moteur du ventilateur.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
+      }
+    }
+  },
+  "52992": {
+    "Description": "Continuous Torque & Speed Limit Request",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "52992",
+    "SPN": {
+      "1784": {
+        "Description SPN": "Engine Speed Limit Request - Minimum Continuous",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
+      },
+      "1785": {
+        "Description SPN": "Engine Speed Limit Request - Maximum Continuous",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
+      },
+      "1786": {
+        "Description SPN": "Engine Torque Limit Request - Minimum Continuous",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
+      },
+      "1787": {
+        "Description SPN": "Engine Torque Limit Request - Maximum Continuous",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
+      },
+      "1788": {
+        "Description SPN": "Minimum Continuous Retarder Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "5"
+      },
+      "1789": {
+        "Description SPN": "Maximum Continuous Retarder Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "6"
+      },
+      "1790": {
+        "Description SPN": "Minimum Continuous Retarder Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
+      },
+      "1791": {
+        "Description SPN": "Maximum Continuous Retarder Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
+      }
+    }
+  },
+  "65350": {
+    "Description": "See document J1939-21 for PG details.",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "65350",
+    "SPN": {}
+  },
+  "65353": {
+    "Description": "See document J1939-21 for PG details.",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "65353",
+    "SPN": {}
+  },
+  "59904": {
+    "Description": "Request, see document J1939-21 for PG details.",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "59904",
+    "SPN": {
+      "2540": {
+        "Description SPN": "Parameter Group Number (RQST), see document J1939-21 for SP details.",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      }
+    }
+  },
+  "65351": {
+    "Description": "Proprietary B, see document J1939-21 for PG details.",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "65351",
+    "SPN": {}
+  },
+  "65279": {
+    "Description": "Operator indicators",
+    "Transmission Repetition Rate": "",
+    "Data Longueur": "8 bytes",
+    "Data Page": "0",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "6",
+    "Parameter Group Number": "65279",
+    "SPN": {
+      "97": {
+        "Description SPN": "Signal qui indique la présence d'eau dans le carburant.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.1"
+      },
+      "355": {
+        "Description SPN": "Signal qui indique la durée de vie réelle de l'huile restante en pourcentage. 100% signifie que l'huile moteur est neuve, et 0% signifie que l'huile moteur est en fin de vie.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "6"
+      },
+      "5675": {
+        "Description SPN": "Commande permettant d'activer un indicateur qui conseille à l'opérateur de passer à un autre rapport.  Cette commande est généralement utilisée dans le cadre d'une amélioration de la consommation de carburant ou d'une aide à la conduite.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.1"
+      },
+      "5825": {
+        "Description SPN": "L'éclairage souhaité de l'indicateur du système d'alerte du conducteur défini par la norme Euro VI pour les dysfonctionnements pertinents et le niveau bas du réservoir de fluide d'échappement diesel (réactif).  Utilisé pour les mises en œuvre de la norme Euro VI.  Voir le règlement d'application Euro VI, annexe XIII, section 4, pour les exigences d'utilisation.",
+        "Longueur": "3 bits",
+        "Position de début bit/octet": "2.4"
+      },
+      "6301": {
+        "Description SPN": "Un deuxième indicateur de la présence d'eau dans le carburant.  Voir aussi SPN 97.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.5"
+      },
+      "8428": {
+        "Description SPN": "Estimation de la distance restante en fonction de l'approvisionnement en carburant existant.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
+      },
+      "8611": {
+        "Description SPN": "Signal qui indique la présence d'eau dans le conduit d'air de suralimentation après le refroidisseur d'air de suralimentation.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.7"
+      },
+      "8612": {
+        "Description SPN": "Signal qui indique que le moteur est surchargé.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.7"
+      },
+      "9373": {
+        "Description SPN": "Signal d'état indiquant une demande du moteur pour que l'indicateur d'inhibition de demande de démarrage automatique soit actif ou inactif. L'indicateur d'inhibition de démarrage peut se présenter sous la forme d'une lampe ou d'un texte, situé sur (mais sans s'y limiter) la console de changement de vitesse, le groupe d'instruments ou l'écran de la cabine. Les fabricants de moteurs peuvent vouloir indiquer qu'ils ne peuvent actuellement pas effectuer le démarrage demandé.  Cela peut être dû à des conditions de moteur inappropriées ou à d'autres restrictions. Les distinctions de signification entre le continu et le clignotant sont laissées au constructeur du moteur.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "5.1"
       }
     }
   }
