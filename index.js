@@ -7,38 +7,50 @@ let arrayID = [],
   tsc1 = false,
   dataJSON = [];
 
-function getEmpId(element) {
+let knowF004, know0;
+let indexID;
+function getEmpId(element, index) {
   let empId = element.getAttribute("id");
   let emppgn = element.getAttribute("data-pgn");
   let pos = element.getAttribute("nb");
-  // console.log(empId);
-  // console.log(emppgn);
-  // console.log(dataJSON[emppgn].SPN[empId]);
-  console.log(Object.keys(dataJSON[emppgn].SPN[empId]));
-  console.log(Object.values(dataJSON[emppgn].SPN[empId]));
-  // console.log(usuedme);
-  // console.log(usuedme);
-  for (let i = 0; i < 3; i++) {}
-  usuedme[pos].innerHTML = `
-    <table class="table table-striped">
+  console.log(element);
+
+  console.log(empId);
+  console.log(index);
+  // console.log(index);
+  console.log(`#${empId}`);
+  let trtr = document.getElementById(`${empId}`);
+
+  // console.log(trtr.parentElement.parentElement);
+  trtr.parentElement.parentElement.querySelector("#usuedme").innerHTML = `
+    <table class="table table-striped m-0">
       <thead>
         <tr class=" fs-4 outline-primary">
-          <th scope="col">${Object.keys(dataJSON[emppgn].SPN[empId])[0]}</th>
-          <th scope="col">${Object.keys(dataJSON[emppgn].SPN[empId])[1]}</th>
-          <th scope="col">${Object.keys(dataJSON[emppgn].SPN[empId])[2]}</th>
+          <th scope="col"><h4>${
+            Object.keys(dataJSON[emppgn].SPN[empId])[0]
+          } <span class="px-3 text-primary text-nowrap bg-light border">${empId}</span></h4></th>
+          <th scope="col"><h4>${
+            Object.keys(dataJSON[emppgn].SPN[empId])[1]
+          }</h4</th>
+          <th scope="col"><h4>${
+            Object.keys(dataJSON[emppgn].SPN[empId])[2]
+          }</h4</th>
         </tr>
       </thead>
-      <tbody class="rounded table-hover">
+      <tbody class="table-hover">
         <tr>
-        <th scope="col">${Object.values(dataJSON[emppgn].SPN[empId])[0]}</th>
-        <th scope="col">${Object.values(dataJSON[emppgn].SPN[empId])[1]}</th>
-        <th scope="col">${Object.values(dataJSON[emppgn].SPN[empId])[2]}</th>
+        <th class="w-50 scope="col"><p class="m-0" style="font-weight: 500">${
+          Object.values(dataJSON[emppgn].SPN[empId])[0]
+        }</p></th>
+        <th scope="col"><p class="m-0" style="font-weight: 500">${
+          Object.values(dataJSON[emppgn].SPN[empId])[1]
+        }</p></th>
+        <th scope="col"><p class="m-0" style="font-weight: 500">${
+          Object.values(dataJSON[emppgn].SPN[empId])[2]
+        }</p></th>
         </tr>
       </tbody>
     </table>`;
-
-  // usuedme[pos].innerHTML = `<h1>${Object.keys(dataJSON[emppgn].SPN[empId])}</h1>
-  // <h2>${Object.values(dataJSON[emppgn].SPN[empId])}</h2>`;
 }
 
 (async function () {
@@ -61,7 +73,7 @@ input.addEventListener("change", () => {
       }
     });
 
-    output.innerHTML = `<div class="card text-center  mt-5 mb-5">
+    output.innerHTML = `<div class="card text-center  my-3">
                             <div class="card-header"><h5>Information générale</h5></div>
                                 <div id="heyye" class="d-flex flex-column text-start card-body">
                                     <h7 class="card-title">Il y a <span class="fw-bold"> ${arrayID.length} </span> appareil(s) communicant(s) sur le bus CAN.</h7>
@@ -69,9 +81,11 @@ input.addEventListener("change", () => {
                         </div>`;
 
     arrayID.map((a, index) => {
+      indexID = index;
+
       arrayPGN = [];
       output.innerHTML += `
-                        <div class="  card text-center mt-5 mb-5">
+                        <div id="id-global-${index}" class="  card text-center mt-5 mb-5">
                             <div class="card-header">
                                 <ul class="nav nav-pills card-header-pills">
                                     <li class="nav-item">
@@ -81,7 +95,7 @@ input.addEventListener("change", () => {
                                     </li>
                                 </ul>
                             </div>
-                            <div class="elementOfId card-body">
+                            <div class="container-pgn card-body">
                             </div>
                         </div>
                         `;
@@ -91,32 +105,36 @@ input.addEventListener("change", () => {
           if (!arrayPGN.includes(c.substr(22, 4))) {
             arrayPGN.push(c.substr(22, 4));
             arrayPGNDEC.push(parseInt(c.substr(22, 4), 16));
+
             if (c.substr(22, 4) == "0000") {
               tsc1 = true;
             }
           }
         }
       });
-      let cellules = document.querySelectorAll(".elementOfId");
+      let cellules = document.querySelectorAll(".container-pgn");
 
       arrayPGNDEC
         .sort((a, b) => a - b)
         .map((h, azgeuaz) => {
           function toto(id) {
-            Object.keys(dataJSON[h].SPN).map((l, olol) => {
-              // console.log(azgeuaz);
-              // console.log(olol);
-              // console.log(index);
-              id.innerHTML += `
-              
-                            <button id="${l}" onclick="getEmpId(this)" data-pgn="${h}" nb="${azgeuaz}" type="button" class="btn  btn-outline-primary">SPN : ${l}</button>
+            Object.keys(dataJSON[h].SPN).map((l) => {
+              console.log(l);
+              if (l == 190) {
+                knowF004 = true;
+              }
+              console.log(indexID);
+              id.innerHTML += `              
+                          <button id="${l}" onclick="getEmpId(this,indexID)" data-pgn="${h}" nb="${
+                index + azgeuaz
+              }" type="button" class="btn  btn-outline-primary">SPN : ${l}</button>
                           `;
             });
           }
 
           if (Object.hasOwn(dataJSON, h)) {
             cellules.item(index).innerHTML += `
-            <div id="mplokiju" class=" card text-start mt-3 mb-3">
+            <div id="pgn-${azgeuaz}" number-pgn"hey" class=" card text-start mt-3 mb-3">
                 <div class="card-header  text-dark">PGN : <span class=" fs-4 fw-bold text-primary">${h
                   .toString(16)
                   .toUpperCase()}</span>
@@ -124,32 +142,89 @@ input.addEventListener("change", () => {
                 <div class="card-header">${dataJSON[h].Description}</div>      
                 <div id="testy${
                   index + azgeuaz
-                }"class="btn-group text-bg-light" role="group" aria-label="Basic outlined example">           
+                }"class=" px-2 py-1 text-bg-light" role="group" aria-label="Basic outlined example">           
                 </div>
-                <div id="usuedme" class="card-header"></div>  
+                <div id="usuedme" class=""></div>  
             </div>
           `;
+            if (
+              document.querySelector(
+                `#id-global-${index} #pgn-${azgeuaz} #testy${index + azgeuaz}`
+              ) != null
+            ) {
+              toto(
+                document.querySelector(
+                  `#id-global-${index} #pgn-${azgeuaz} #testy${index + azgeuaz}`
+                )
+              );
+            }
 
-            toto(document.getElementById(`testy${index + azgeuaz}`));
+            console.log(
+              document.querySelector(
+                `#id-global-${index} #pgn-${azgeuaz} #testy${index + azgeuaz}`
+              )
+            );
           } else {
+            console.log(index);
+            console.log(azgeuaz);
             cellules.item(index).innerHTML += `
-            <div class=" card text-start mt-3 mb-3">
+            <div id="pgn-${
+              index + azgeuaz
+            }" number-pgn"hey" class=" card text-start mt-3 mb-3">
                 <div class="card-header  text-dark">PGN : <span class=" fs-4 fw-bold text-primary">${h
                   .toString(16)
                   .toUpperCase()}</span>
                 </div>
                 <div class="card-header"></div>      
-                <div id="testy${index}"class="btn-group text-bg-light" role="group" aria-label="Basic outlined example">  
+                <div id="testy${
+                  index + azgeuaz
+                }"class="btn-group text-bg-light" role="group" aria-label="Basic outlined example">           
+                </div>
                 <div id="usuedme" class="card-header"></div>  
             </div>
-            `;
+          `;
           }
           arrayPGNDEC = [];
         });
     });
 
     if (tsc1) {
+      document
+        .getElementById(898)
+        .parentElement.parentElement.parentElement.parentElement.classList.add(
+          `bg-success`,
+          `bg-opacity-10`,
+          `border-success`
+        );
       heyye.innerHTML += `<h7 class="card-title">La trame TSC1 a été detecté sur la communication</h7>`;
+      heyye.innerHTML += `<span class="text-success bg-success bg-opacity-10 border-success">l'ID en vert est le controleur moteur</span>`;
+      document
+        .getElementById(898)
+        .classList.add(
+          `text-success`,
+          `bg-success`,
+          `bg-opacity-10`,
+          `border-success`
+        );
+    }
+    if (knowF004) {
+      heyye.innerHTML += `<span class="text-primary bg-primary bg-opacity-10 border-primary">l'ID en bleu est l'ECU moteur</span>`;
+      document
+        .getElementById(190)
+        .classList.add(
+          `text-primary`,
+          `bg-primary`,
+          `bg-opacity-10`,
+          `border-primary`
+        );
+
+      document
+        .getElementById(190)
+        .parentElement.parentElement.parentElement.parentElement.classList.add(
+          `bg-primary`,
+          `bg-opacity-10`,
+          `border-primary`
+        );
     }
   };
 });

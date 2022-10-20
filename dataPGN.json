@@ -2,7 +2,7 @@
   "0": {
     "Description": "Torque/Speed Control 1 - TSC1",
     "Trans1571ission Repetition Rate": "when active; 10 ms to engine - 50 ms to retarder",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "0",
     "PDU Specific": "DA",
@@ -10,88 +10,195 @@
     "Parameter Group Number": "0",
     "SPN": {
       "695": {
-        "SPN Description": "Override Control Mode",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.1"
+        "Description SPN": "Le mode de commande prioritaire définit le type de commande utilisé.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.1-1.2"
       },
       "696": {
-        "SPN Description": "Requested Speed Control Conditions",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.3"
+        "Description SPN": "Ce mode indique au système de contrôle du moteur les caractéristiques du régulateur qui sont souhaitées pendant le contrôle de la vitesse. ",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.3"
       },
       "897": {
-        "SPN Description": "Override Control Mode Priority",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.5"
+        "Description SPN": "Ce champ est utilisé comme entrée pour le moteur ou le ralentisseur afin de déterminer la priorité du mode de commande prioritaire reçu dans le message de commande de couple/vitesse (voir PGN 0).  La valeur par défaut est 11b (faible priorité).  Il n'est pas nécessaire d'utiliser la même priorité pendant toute la durée de la fonction de neutralisation.  Par exemple, la transmission peut utiliser la priorité 01b (priorité élevée) pendant un changement de vitesse, mais peut régler la priorité sur 11b (priorité basse) à la fin du changement de vitesse pour permettre à la commande de traction d'interagir également avec la limite de couple du moteur.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.5"
       },
       "898": {
-        "SPN Description": "Requested Speed/Speed Limit",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "2.3"
+        "Description SPN": "Paramètre fourni au moteur par des sources externes dans le message de commande de couple/vitesse.  Il s'agit du régime moteur auquel le moteur est censé fonctionner si le mode de contrôle de la vitesse est actif ou du régime moteur que le moteur n'est pas censé dépasser si le mode de limitation de la vitesse est actif.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2.3"
       },
       "518": {
-        "SPN Description": "Requested Torque/Torque Limit",
-        "5ength": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Paramètre fourni au moteur ou au ralentisseur dans le message de commande de couple/vitesse pour contrôler ou limiter le couple de sortie.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       }
     }
   },
   "256": {
-    "Description": "Continuous Torque & Speed Limit Request - CTL",
+    "Description": "Transmission Control 1 - TC1",
     "Transmission Repetition Rate": "5 s",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "207",
     "PDU Specific": "DA",
-    "Default Priority": "6",
+    "Default Priority": "3",
     "Parameter Group Number": "52992",
     "SPN": {
+      "7695": {
+        "Description SPN": "Ce paramètre indique que le système du véhicule souhaite ignorer la demande actuelle du conducteur concernant le sélecteur de vitesses (par exemple, marche avant, marche arrière) et faire passer la transmission au point mort. \"Manual Return\" (retour manuel) indique que ce paramètre a la capacité de faire passer la transmission au point mort, mais qu'il ne permet pas à la transmission de revenir automatiquement à la gamme une fois le point mort atteint, ou une fois la demande annulée. Voir le paramètre SPN 7696 pour l'état de la transmission et la réponse à cette demande.",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "7.1"
+      },
       "1784": {
-        "SPN Description": "Minimum Continuous Engine Speed Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Minimum Continuous Engine Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "1785": {
-        "SPN Description": "Maximum Continuous Engine Speed Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Maximum Continuous Engine Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "1786": {
-        "SPN Description": "Minimum Continuous Engine Torque Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Minimum Continuous Engine Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "1787": {
-        "SPN Description": "Maximum Continuous Engine Torque Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Maximum Continuous Engine Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       },
       "1788": {
-        "SPN Description": "Minimum Continuous Retarder Speed Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "5"
+        "Description SPN": "Minimum Continuous Retarder Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "5"
       },
       "1789": {
-        "SPN Description": "Maximum Continuous Retarder Speed Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "6"
+        "Description SPN": "Maximum Continuous Retarder Speed Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "6"
       },
       "1790": {
-        "SPN Description": "Minimum Continuous Retarder Torque Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "7"
+        "Description SPN": "Minimum Continuous Retarder Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
       },
       "1791": {
-        "SPN Description": "Maximum Continuous Retarder Torque Limit Request",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Maximum Continuous Retarder Torque Limit Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
+      }
+    }
+  },
+  "57344": {
+    "Description": "Cab Message 1 - CM1",
+    "Trans1571ission Repetition Rate": "100 ms",
+    "Data Longueur": "8 bytes",
+    "Data Page": "",
+    "PDU Format": "",
+    "PDU Specific": "",
+    "Default Priority": "",
+    "Parameter Group Number": "57344",
+    "SPN": {
+      "986": {
+        "Description SPN": "Fan speed of the first or only fan in the system as a ratio of the actual fan drive (current speed) to the fully engaged fan drive (maximum fan speed). A two state fan (off/on) will use 0% and 100% respectively. A three state fan (off/intermediate/on) will use 0%, 50% and 100% respectively. A variable speed fan will use 0% to 100%. Multiple fan systems will use 0 to 100% to indicate the percent cooling capacity being provided. Feedback to this request is provided using the estimated fan speed (see SPN 975).",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1691": {
+        "Description SPN": "Cab Interior Temperature Command",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1684": {
+        "Description SPN": "Auxiliary Heater Coolant Pump Request",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1682": {
+        "Description SPN": "Battery Main Switch Hold Request",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1714": {
+        "Description SPN": "Operator Seat Direction Switch",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1856": {
+        "Description SPN": "Seat Belt Switch",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "5630": {
+        "Description SPN": "La pression différentielle entre l'entrée et la sortie du papillon des gaz 1 (SPN 51).  La pression différentielle est mesurée à partir de l'entrée par rapport à la sortie du papillon des gaz.",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1655": {
+        "Description SPN": "Vehicle Limiting Speed Governor Decrement Switch",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1654": {
+        "Description SPN": "Vehicle Limiting Speed Governor Increment Switch",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1653": {
+        "Description SPN": "Vehicle Limiting Speed Governor Enable Switch",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "3695": {
+        "Description SPN": "Indique l'état d'un interrupteur à la disposition de l'opérateur qui inhibe la régénération du post-traitement. Le contrôleur du moteur doit inhiber la régénération lorsque le SPN 3695 est à l'état ON.  La régénération doit être activée par le SPN 3696 lorsqu'il est à l'état ON et que le SPN 3695 est à l'état OFF.",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "3696": {
+        "Description SPN": "Indique l'état d'un commutateur à la disposition de l'opérateur qui force la régénération du post-traitement. Le contrôleur du moteur doit inhiber la régénération lorsque le SPN 3695 est à l'état ON.  La régénération doit être activée par le SPN 3696 lorsqu'il est à l'état ON et que le SPN 3695 est à l'état OFF.",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1666": {
+        "Description SPN": "Automatic Gear Shifting Enable Switch",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2.3"
+      },
+      "1656": {
+        "Description SPN": "Signal de commutation qui permet d'activer le système de gestion du ralenti. Lorsque ce système est activé alors que le moteur est en mode ralenti et que les conditions de fonctionnement sont sûres, le moteur peut être démarré ou arrêté automatiquement.",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
+      },
+      "1683": {
+        "Description SPN": "Auxiliary Heater Mode Request",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
+      },
+      "1685": {
+        "Description SPN": "Request Engine Zone Heating",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "1686": {
+        "Description SPN": "Request Cab Zone Heating",
+        "Longueur": "",
+        "Position de début bit/octet": ""
+      },
+      "2596": {
+        "Description SPN": "Selected Maximum Vehicle Speed Limit",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2.3"
       }
     }
   },
   "61442": {
     "Description": "Electronic Transmission Controller 1 - ETC1",
     "Transmission Repetition Rate": "10 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "240",
     "PDU Specific": "2",
@@ -99,56 +206,56 @@
     "Parameter Group Number": "61442",
     "SPN": {
       "560": {
-        "SPN Description": "Driveline Engaged",
-        "Length": "2 bit",
-        "Bit Start Position /Bytes": "1.1"
+        "Description SPN": "Driveline Engaged",
+        "Longueur": "2 bit",
+        "Position de début bit/octet": "1.1"
       },
       "573": {
-        "SPN Description": "Torque Converter Lockup Engaged",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.3"
+        "Description SPN": "Torque Converter Lockup Engaged",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.3"
       },
       "574": {
-        "SPN Description": "Shift In Process",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.5"
+        "Description SPN": "Shift In Process",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.5"
       },
       "191": {
-        "SPN Description": "Output Shaft Speed",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "2-3"
+        "Description SPN": "Output Shaft Speed",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2-3"
       },
       "522": {
-        "SPN Description": "Percent Clutch Slip",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Percent Clutch Slip",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       },
       "606": {
-        "SPN Description": "Momentary Engine Overspeed Enable",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "5.1"
+        "Description SPN": "Momentary Engine Overspeed Enable",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "5.1"
       },
       "607": {
-        "SPN Description": "Progressive Shift Disable",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "5.3"
+        "Description SPN": "Progressive Shift Disable",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "5.3"
       },
       "161": {
-        "SPN Description": "Input Shaft Speed",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "6-7"
+        "Description SPN": "Input Shaft Speed",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "6-7"
       },
       "1482": {
-        "SPN Description": "Source Address of Controlling Device for Transmission Control",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Source Address of Controlling Device for Transmission Control",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
       }
     }
   },
   "61443": {
     "Description": "Electronic Engine Controller 2 - EEC2",
     "Transmission Repetition Rate": "50 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "240",
     "PDU Specific": "3",
@@ -156,41 +263,41 @@
     "Parameter Group Number": "61443",
     "SPN": {
       "558": {
-        "SPN Description": "Accelerator Pedal 1 Low Idle Switch",
-        "Length": "2 bit",
-        "Bit Start Position /Bytes": "1.1"
+        "Description SPN": "Accelerator Pedal 1 Low Idle Switch",
+        "Longueur": "2 bit",
+        "Position de début bit/octet": "1.1"
       },
       "559": {
-        "SPN Description": "Accelerator Pedal Kickdown Switch",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.3"
+        "Description SPN": "Accelerator Pedal Kickdown Switch",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.3"
       },
       "1437": {
-        "SPN Description": "Road Speed Limit Status",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.5"
+        "Description SPN": "Road Speed Limit Status",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.5"
       },
       "91": {
-        "SPN Description": "Accelerator Pedal Position 1",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Accelerator Pedal Position 1",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "92": {
-        "SPN Description": "Percent Load At Current Speed",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Percent Load At Current Speed",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "974": {
-        "SPN Description": "Remote Accelerator Pedal Position",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Remote Accelerator Pedal Position",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       }
     }
   },
   "61444": {
     "Description": "Electronic Engine Controller 1 - EEC1",
     "Transmission Repetition Rate": "Engine speed dependent",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "240",
     "PDU Specific": "4",
@@ -198,46 +305,46 @@
     "Parameter Group Number": "61444",
     "SPN": {
       "899": {
-        "SPN Description": "Engine Torque Mode",
-        "Length": "4 bits",
-        "Bit Start Position /Bytes": "1.1"
+        "Description SPN": "Engine Torque Mode",
+        "Longueur": "4 bits",
+        "Position de début bit/octet": "1.1"
       },
       "512": {
-        "SPN Description": "Driver's Demand Engine - Percent Torque",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Driver's Demand Engine - Percent Torque",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "513": {
-        "SPN Description": "Actual Engine - Percent Torque",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Actual Engine - Percent Torque",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "190": {
-        "SPN Description": "Engine Speed",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "4-5"
+        "Description SPN": "Engine Speed",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "4-5"
       },
       "1483": {
-        "SPN Description": "Source Address of Controlling Device for Engine Control",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "6"
+        "Description SPN": "Source Address of Controlling Device for Engine Control",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "6"
       },
       "1675": {
-        "SPN Description": "Engine Starter Mode",
-        "Length": "4 bits",
-        "Bit Start Position /Bytes": "7.1"
+        "Description SPN": "Engine Starter Mode",
+        "Longueur": "4 bits",
+        "Position de début bit/octet": "7.1"
       },
       "2432": {
-        "SPN Description": "Engine Demand - Percent Torque",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Engine Demand - Percent Torque",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
       }
     }
   },
   "61445": {
     "Description": "Electronic Transmission Controller 2 - ETC2",
     "Transmission Repetition Rate": "100 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "240",
     "PDU Specific": "5",
@@ -245,31 +352,31 @@
     "Parameter Group Number": "61445",
     "SPN": {
       "524": {
-        "SPN Description": "Selected Gear",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Selected Gear",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "526": {
-        "SPN Description": "Actual Gear Ratio",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "2-3"
+        "Description SPN": "Actual Gear Ratio",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2-3"
       },
       "523": {
-        "SPN Description": "Current Gear",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Current Gear",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       },
       "162": {
-        "SPN Description": "Transmission Requested Range",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Transmission Requested Range",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       }
     }
   },
   "61448": {
     "Description": "Hydraulic Pressure Governor Info - HPG",
     "Transmission Repetition Rate": "50 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "240",
     "PDU Specific": "8",
@@ -277,31 +384,31 @@
     "Parameter Group Number": "61448",
     "SPN": {
       "1762": {
-        "SPN Description": "Hydraulic Pressure",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "1-2"
+        "Description SPN": "Hydraulic Pressure",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "1-2"
       },
       "1763": {
-        "SPN Description": "Hydraulic Pressure Mode Indicator",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.1"
+        "Description SPN": "Hydraulic Pressure Mode Indicator",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.1"
       },
       "1764": {
-        "SPN Description": "Hydraulic Pressure Governor Switch",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.3"
+        "Description SPN": "Hydraulic Pressure Governor Switch",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.3"
       },
       "2599": {
-        "SPN Description": "Fire Apparatus Pump Engagement",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.5"
+        "Description SPN": "Fire Apparatus Pump Engagement",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.5"
       }
     }
   },
   "65031": {
     "Description": "Exhaust Temperature - ET",
     "Transmission Repetition Rate": "500 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "7",
@@ -309,21 +416,31 @@
     "Parameter Group Number": "65031",
     "SPN": {
       "2433": {
-        "SPN Description": "Right Manifold Exhaust Gas Temperature",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "1-2"
+        "Description SPN": "Température des sous-produits de combustion mesurée dans le collecteur d'échappement du banc 2 (rive droite) du moteur. Les moteurs à collecteur unique doivent utiliser la température d'échappement (SPN 173).",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "1-2"
       },
       "2434": {
-        "SPN Description": "Left Manifold Exhaust Gas Temperature",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "3-4"
+        "Description SPN": "Température des sous-produits de combustion mesurée dans le collecteur d'échappement du banc 1 (rive gauche) du moteur.  Les moteurs à collecteur unique doivent utiliser la température d'échappement (SPN 173).",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
+      },
+      "5969": {
+        "Description SPN": "Température des sous-produits de combustion mesurée par un deuxième capteur dans le collecteur d'échappement du banc 2 (rive droite) du moteur. Il s'agit du capteur situé vers l'arrière du moteur sur le collecteur du banc 2.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
+      },
+      "5970": {
+        "Description SPN": "Température des sous-produits de combustion mesurée par un deuxième capteur dans le collecteur d'échappement du banc 1 (rive gauche) du moteur. Il s'agit du capteur situé vers l'arrière du moteur sur le collecteur du banc 1.",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "7-8"
       }
     }
   },
   "65159": {
     "Description": "Exhaust Temperature - ET",
     "Transmission Repetition Rate": "On request",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "135",
@@ -331,31 +448,31 @@
     "Parameter Group Number": "65159",
     "SPN": {
       "1433": {
-        "SPN Description": "Desired Ignition Timing #1",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "1-2"
-      },
-      "2434": {
-        "SPN Description": "Desired Ignition Timing #2",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "3-4"
+        "Description SPN": "Desired Ignition Timing #1",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "1-2"
       },
       "1434": {
-        "SPN Description": "Desired Ignition Timing #3",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Desired Ignition Timing #2",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
+      },
+      "1435": {
+        "Description SPN": "Desired Ignition Timing #3",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       },
       "1436": {
-        "SPN Description": "Actual Ignition Timing",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "7-8"
+        "Description SPN": "Actual Ignition Timing",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "7-8"
       }
     }
   },
   "65164": {
     "Description": "Auxiliary Analog Information - AAI",
     "Transmission Repetition Rate": "On request",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "140",
@@ -363,31 +480,31 @@
     "Parameter Group Number": "65164",
     "SPN": {
       "441": {
-        "SPN Description": "Auxiliary Temperature 1",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Auxiliary Temperature 1",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "442": {
-        "SPN Description": "Auxiliary Temperature 2",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Auxiliary Temperature 2",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "1387": {
-        "SPN Description": "Auxiliary Pressure #1",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Auxiliary Pressure #1",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "1388": {
-        "SPN Description": "Auxiliary Pressure #2",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Auxiliary Pressure #2",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       }
     }
   },
   "65241": {
     "Description": "Auxiliary Input/Output Status - AUXIO",
     "Transmission Repetition Rate": "Manufacturer defined, not faster than 100 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "217",
@@ -395,101 +512,101 @@
     "Parameter Group Number": "65241",
     "SPN": {
       "704": {
-        "SPN Description": "Auxiliary I/O #04",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.1"
+        "Description SPN": "Auxiliary I/O #04",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.1"
       },
       "703": {
-        "SPN Description": "Auxiliary I/O #03",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.3"
+        "Description SPN": "Auxiliary I/O #03",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.3"
       },
       "702": {
-        "SPN Description": "Auxiliary I/O #02",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.5"
+        "Description SPN": "Auxiliary I/O #02",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.5"
       },
       "701": {
-        "SPN Description": " Auxiliary I/O #01",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "1.7"
+        "Description SPN": " Auxiliary I/O #01",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "1.7"
       },
       "708": {
-        "SPN Description": "Auxiliary I/O #08",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "2.1"
+        "Description SPN": "Auxiliary I/O #08",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.1"
       },
       "707": {
-        "SPN Description": "Auxiliary I/O #07",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "2.3"
+        "Description SPN": "Auxiliary I/O #07",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.3"
       },
       "706": {
-        "SPN Description": "Auxiliary I/O #06",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "2.5"
+        "Description SPN": "Auxiliary I/O #06",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.5"
       },
       "705": {
-        "SPN Description": "Auxiliary I/O #05",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "2.7"
+        "Description SPN": "Auxiliary I/O #05",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "2.7"
       },
       "712": {
-        "SPN Description": "Auxiliary I/O #12",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.1"
+        "Description SPN": "Auxiliary I/O #12",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.1"
       },
       "711": {
-        "SPN Description": "Auxiliary I/O #11",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.3"
+        "Description SPN": "Auxiliary I/O #11",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.3"
       },
       "710": {
-        "SPN Description": "Auxiliary I/O #10",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.5"
+        "Description SPN": "Auxiliary I/O #10",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.5"
       },
       "709": {
-        "SPN Description": "Auxiliary I/O #09",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "3.7"
+        "Description SPN": "Auxiliary I/O #09",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "3.7"
       },
       "716": {
-        "SPN Description": "Auxiliary I/O #16",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "4.1"
+        "Description SPN": "Auxiliary I/O #16",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "4.1"
       },
       "715": {
-        "SPN Description": "Auxiliary I/O #15",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "4.3"
+        "Description SPN": "Auxiliary I/O #15",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "4.3"
       },
       "714": {
-        "SPN Description": "Auxiliary I/O #14",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "4.5"
+        "Description SPN": "Auxiliary I/O #14",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "4.5"
       },
       "713": {
-        "SPN Description": "Auxiliary I/O #13",
-        "Length": "2 bits",
-        "Bit Start Position /Bytes": "4.7"
+        "Description SPN": "Auxiliary I/O #13",
+        "Longueur": "2 bits",
+        "Position de début bit/octet": "4.7"
       },
       "1083": {
-        "SPN Description": "Auxiliary I/O Channel #1",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Auxiliary I/O Channel #1",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       },
       "1084": {
-        "SPN Description": "Auxiliary I/O Channel #2",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "7-8"
+        "Description SPN": "Auxiliary I/O Channel #2",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "7-8"
       }
     }
   },
   "65247": {
     "Description": "Electronic Engine Controller 3 - EEC3",
     "Transmission Repetition Rate": "250 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "223",
@@ -497,26 +614,26 @@
     "Parameter Group Number": "65247",
     "SPN": {
       "514": {
-        "SPN Description": "Nominal Friction - Percent Torque",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Nominal Friction - Percent Torque",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "515": {
-        "SPN Description": "Engine's Desired Operating Speed",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "2-3"
+        "Description SPN": "Engine's Desired Operating Speed",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "2-3"
       },
       "519": {
-        "SPN Description": "Engine's Desired Operating Speed Asymmetry Adjustment",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Engine's Desired Operating Speed Asymmetry Adjustment",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       }
     }
   },
   "65248": {
     "Description": "Vehicle Distance - VD",
     "Transmission Repetition Rate": "100 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "224",
@@ -524,21 +641,21 @@
     "Parameter Group Number": "65248",
     "SPN": {
       "244": {
-        "SPN Description": "Trip Distance",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "1-4"
+        "Description SPN": "Trip Distance",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "1-4"
       },
       "245": {
-        "SPN Description": "Total Vehicle Distance",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "5-8"
+        "Description SPN": "Total Vehicle Distance",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "5-8"
       }
     }
   },
   "65253": {
     "Description": "Engine Hours, Revolutions - HOURS",
     "Transmission Repetition Rate": "On request",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "229",
@@ -546,21 +663,21 @@
     "Parameter Group Number": "65253",
     "SPN": {
       "247": {
-        "SPN Description": "Total Engine Hours",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "1-4"
+        "Description SPN": "Total Engine Hours",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "1-4"
       },
       "249": {
-        "SPN Description": "Total Engine Revolutions",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "5-8"
+        "Description SPN": "Total Engine Revolutions",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "5-8"
       }
     }
   },
   "65257": {
     "Description": "Engine Hours, Revolutions - HOURS",
     "Transmission Repetition Rate": "On request",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "229",
@@ -568,21 +685,21 @@
     "Parameter Group Number": "65257",
     "SPN": {
       "182": {
-        "SPN Description": "Trip Fuel",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "1-4"
+        "Description SPN": "Trip Fuel",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "1-4"
       },
       "250": {
-        "SPN Description": "Total Fuel Used",
-        "Length": "4 bytes",
-        "Bit Start Position /Bytes": "5-8"
+        "Description SPN": "Total Fuel Used",
+        "Longueur": "4 bytes",
+        "Position de début bit/octet": "5-8"
       }
     }
   },
   "65262": {
     "Description": "Engine Temperature 1 - ET1",
     "Transmission Repetition Rate": "1 s",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "238",
@@ -590,41 +707,41 @@
     "Parameter Group Number": "65262",
     "SPN": {
       "110": {
-        "SPN Description": "Engine Coolant Temperature",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Engine Coolant Temperature",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "174": {
-        "SPN Description": "Fuel Temperature",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Fuel Temperature",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "175": {
-        "SPN Description": "Engine Oil Temperature 1",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "3-4"
+        "Description SPN": "Engine Oil Temperature 1",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
       },
       "176": {
-        "SPN Description": "Turbo Oil Temperature",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Turbo Oil Temperature",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       },
       "52": {
-        "SPN Description": "Engine Intercooler Temperature",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "7"
+        "Description SPN": "Engine Intercooler Temperature",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
       },
       "1134": {
-        "SPN Description": "Engine Intercooler Thermostat Opening",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Engine Intercooler Thermostat Opening",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
       }
     }
   },
   "65263": {
     "Description": "Engine Fluid Level/Pressure 1 - EFL/P1",
     "Transmission Repetition Rate": "500 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "239",
@@ -632,46 +749,46 @@
     "Parameter Group Number": "65263",
     "SPN": {
       "94": {
-        "SPN Description": "Fuel Delivery Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Fuel Delivery Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "22": {
-        "SPN Description": "Extended Crankcase Blow-by Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Extended Crankcase Blow-by Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "98": {
-        "SPN Description": "Engine Oil Level",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Engine Oil Level",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "100": {
-        "SPN Description": "Engine Oil Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Engine Oil Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       },
       "101": {
-        "SPN Description": "Crankcase Pressure",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Crankcase Pressure",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       },
       "109": {
-        "SPN Description": "Coolant Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "7"
+        "Description SPN": "Coolant Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
       },
       "111": {
-        "SPN Description": "Coolant Level",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Coolant Level",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
       }
     }
   },
   "65266": {
     "Description": "Fuel Economy (Liquid) - LFE",
     "Transmission Repetition Rate": "100 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "242",
@@ -679,31 +796,31 @@
     "Parameter Group Number": "65266",
     "SPN": {
       "183": {
-        "SPN Description": "Fuel Rate",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "1-2"
+        "Description SPN": "Fuel Rate",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "1-2"
       },
       "184": {
-        "SPN Description": "Instantaneous Fuel Economy",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "3-4"
+        "Description SPN": "Instantaneous Fuel Economy",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "3-4"
       },
       "185": {
-        "SPN Description": "Average Fuel Economy",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "5-6"
+        "Description SPN": "Average Fuel Economy",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "5-6"
       },
       "51": {
-        "SPN Description": "Throttle Position",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "7"
+        "Description SPN": "Throttle Position",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "7"
       }
     }
   },
   "65270": {
     "Description": "Fuel Economy (Liquid) - LFE",
     "Transmission Repetition Rate": "500 ms",
-    "Data Length": "8 bytes",
+    "Data Longueur": "8 bytes",
     "Data Page": "0",
     "PDU Format": "254",
     "PDU Specific": "246",
@@ -711,39 +828,39 @@
     "Parameter Group Number": "65270",
     "SPN": {
       "81": {
-        "SPN Description": "Particulate Trap Inlet Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "1"
+        "Description SPN": "Particulate Trap Inlet Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "1"
       },
       "102": {
-        "SPN Description": "Boost Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "2"
+        "Description SPN": "Boost Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "2"
       },
       "105": {
-        "SPN Description": "Intake Manifold 1 Temperature",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "3"
+        "Description SPN": "Intake Manifold 1 Temperature",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "3"
       },
       "106": {
-        "SPN Description": "Air Inlet Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "4"
+        "Description SPN": "Air Inlet Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "4"
       },
       "107": {
-        "SPN Description": "Air Filter 1 Differential Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "5"
+        "Description SPN": "Air Filter 1 Differential Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "5"
       },
       "173": {
-        "SPN Description": "Exhaust Gas Temperature",
-        "Length": "2 bytes",
-        "Bit Start Position /Bytes": "6-7"
+        "Description SPN": "Exhaust Gas Temperature",
+        "Longueur": "2 bytes",
+        "Position de début bit/octet": "6-7"
       },
       "112": {
-        "SPN Description": "Coolant Filter Differential Pressure",
-        "Length": "1 byte",
-        "Bit Start Position /Bytes": "8"
+        "Description SPN": "Coolant Filter Differential Pressure",
+        "Longueur": "1 byte",
+        "Position de début bit/octet": "8"
       }
     }
   }
