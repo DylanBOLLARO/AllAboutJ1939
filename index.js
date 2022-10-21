@@ -73,6 +73,7 @@ input.addEventListener("change", () => {
                         </div>`;
 
     arrayID.map((a, index) => {
+      console.log(a);
       indexID = index;
 
       arrayPGN = [];

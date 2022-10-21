@@ -1,0 +1,27 @@
+header {
+  box-shadow: #0d6efd 0px 2px 8px 0px;
+}
+
+.label-file {
+  cursor: pointer;
+  color: whitesmoke;
+  font-weight: bold;
+  transition: 1s;
+}
+.input-file {
+  display: none;
+}
+
+button {
+  border: 1px solid black !important;
+  background-color: gray;
+}
+
+button:hover {
+  transition: 1s;
+  background-color: #0d6dfd4e !important;
+}
+
+button:hover .label-file {
+  letter-spacing: 10px;
+}
